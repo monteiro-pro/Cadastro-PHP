@@ -47,10 +47,10 @@
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h4 class="modal-title">Alteração Realizado com Sucesso!</h4>
+                  <h3 class="modal-title">Alteração Realizado com Sucesso!</h3>
                 </div>
                 <div class="modal-body">                 
-                  <?php echo "<b>Usuário</b> $nome" ?>                 
+                  <?php echo "Usuário <b>$nome</b> Alterado" ?>                 
                 </div>
                 <div class="modal-footer">                 
                   <a href="../index.php" class="btn btn-primary">OK</a>
@@ -64,14 +64,14 @@
             });
           </script>
   			
-       <?php echo"<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/cadastro/index.php'>" }else{ ?>
+       <?php }else{ ?>
 
   				<!-- Modal -->
           <div class="modal fade" id="janela">
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h4 class="modal-title">Erro ao Alterar Usuário!</h4>
+                  <h3 class="modal-title">Erro ao Alterar Usuário!</h3>
                 </div>
                 <div class="modal-body">                 
                   <?php echo 'Erro no Banco de Dados!' ?>                 

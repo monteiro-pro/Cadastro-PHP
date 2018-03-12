@@ -1,13 +1,9 @@
 <?php
 		include_once("conexao.php");
 
-		$nome = $_POST['nome'];
-		$idade = $_POST['idade'];
-		$email = $_POST['email'];
-		$senha = $_POST['senha'];
-		$foto = $_POST['foto'];
+    $codigo = $_POST['codigo'];
 
-		$sql = "INSERT INTO usuario (NOME,IDADE,EMAIL,SENHA,FOTO) VALUES ('$nome', '$idade', '$email', '$senha', '$foto')";
+		$sql = "DELETE FROM usuario WHERE CODIGO = '$codigo'";
 		$salvar = mysqli_query($conexao, $sql);
 
 		$linhas = mysqli_affected_rows($conexao);
@@ -22,7 +18,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Conf. de Cadastro</title>
+    <title>Conf. de Exclusão</title>
     
     <!-- Bootstrap -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -35,7 +31,7 @@
 
   	<div class="container">
   		<div class="page-header">
-  			<h1>Confirmação de Cadastro</h1>
+  			<h1>Confirmação de Exclusão</h1>
   		</div>
 
       <?php 
@@ -47,10 +43,10 @@
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h3 class="modal-title">Cadastro Realizado com Sucesso!</h3>
+                  <h3 class="modal-title">Exclusão Realizado com Sucesso!</h3>
                 </div>
                 <div class="modal-body">                 
-                  <?php echo "Usuário <b>$nome</b> Cadastrado" ?>                
+                  Usuário Excluido             
                 </div>
                 <div class="modal-footer">                 
                   <a href="../index.php" class="btn btn-primary">OK</a>
@@ -71,10 +67,10 @@
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h3 class="modal-title">Erro ao Cadastrar Usuário!</h3>
+                  <h3 class="modal-title">Erro ao Excluir Usuário!</h3>
                 </div>
                 <div class="modal-body">                 
-                  <?php echo 'Já Exixte Alguem Cadastrado com Este E-mail<br> Ou Erro no Banco de Dados!' ?>              
+                  <?php echo 'Erro no Banco de Dados!' ?>                 
                 </div>
                 <div class="modal-footer">                 
                   <a href="../index.php" class="btn btn-danger">OK</a>

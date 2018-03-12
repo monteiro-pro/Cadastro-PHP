@@ -4,7 +4,6 @@
 }
 
 body {
-	
 }
 
 button > a:hover, button > a:focus{
@@ -14,4 +13,8 @@ button > a:hover, button > a:focus{
 #teste{
 	font-size: 50px;
 	font-weight: bold;
+}
+
+.titulo_cad{
+	font-size: 25px;
 }
