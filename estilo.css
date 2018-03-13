@@ -3,16 +3,8 @@
 	padding: 0;
 }
 
-body {
-}
-
 button > a:hover, button > a:focus{
 	text-decoration: none;
-}
-
-#teste{
-	font-size: 50px;
-	font-weight: bold;
 }
 
 .titulo_cad{
