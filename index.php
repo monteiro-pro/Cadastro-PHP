@@ -41,10 +41,11 @@
             </div>
           </div><hr><br><!--// CADASTRAR USUÁRIO -->
 
+          <!-- PESQUISAR USUÁRIO -->
           <form method="POST" action="classes/processa_pesquisar.php" class="pull-right form-inline">
-            <input type="text" class="form-control" name="pesquisa" placeholder="Pesquisar...">
+            <input type="text" class="form-control" name="pesquisa" placeholder="Nome do Usuário...">
             <button type="submit" class="btn btn-primary">Pesquisar</button>
-          </form>
+          </form><!--// PESQUISAR USUÁRIO -->
 
           <!-- MODAL CADASTRAR -->
           <div class="modal fade" id="modalcad" tabindex="-1" role="dialog">
