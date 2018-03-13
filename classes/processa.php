@@ -5,7 +5,10 @@
 		$idade = $_POST['idade'];
 		$email = $_POST['email'];
 		$senha = $_POST['senha'];
-		$foto = $_POST['foto'];
+		$foto = $_FILES['foto']['name'];
+    $temp = $_FILES['foto']['tmp_name'];
+
+    move_uploaded_file($temp, "../img/".$foto);
 
 		$sql = "INSERT INTO usuario (NOME,IDADE,EMAIL,SENHA,FOTO) VALUES ('$nome', '$idade', '$email', '$senha', '$foto')";
 		$salvar = mysqli_query($conexao, $sql);
@@ -74,7 +77,7 @@
                   <h3 class="modal-title">Erro ao Cadastrar Usuário!</h3>
                 </div>
                 <div class="modal-body">                 
-                  <?php echo 'Já Exixte Alguem Cadastrado com Este E-mail<br> Ou Erro no Banco de Dados!' ?>              
+                  <?php echo 'Já Exixte Alguem Cadastrado com Este E-mail<br> Ou Erro no Banco de Dados!' ?>            
                 </div>
                 <div class="modal-footer">                 
                   <a href="../index.php" class="btn btn-danger">OK</a>
@@ -82,18 +85,21 @@
               </div>
             </div>
           </div><!--// Modal -->
+
+          <!-- Show Modal -->
           <script>
             $(document).ready(function () {
               $('#janela').modal('show');
             });
-          </script>
+          </script><!--// Show Modal -->
 
   			<?php } ?>
 
   		<div>
   			<a class="btn btn-primary" href="../index.php">Voltar</a>
   		</div>
-  	</div>
+
+  	</div><!-- Conteiner -->
 
   </body>
 </html>

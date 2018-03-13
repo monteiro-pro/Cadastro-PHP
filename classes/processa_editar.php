@@ -6,9 +6,13 @@
 		$email = $_POST['email'];
 		$senha = $_POST['senha'];
     $codigo = $_POST['codigo'];
+    $foto = $_FILES['foto']['name'];
+    $temp = $_FILES['foto']['tmp_name'];
 
-		$sql = "UPDATE usuario SET NOME='$nome', IDADE='$idade',EMAIL='$email',SENHA='$senha' WHERE CODIGO = '$codigo'";
-		$salvar = mysqli_query($conexao, $sql);
+    move_uploaded_file($temp, "../img/".$foto);
+
+		$sql = "UPDATE usuario SET NOME='$nome',IDADE='$idade',EMAIL='$email',SENHA='$senha',FOTO='$foto' WHERE CODIGO = '$codigo'";
+		$atualizar = mysqli_query($conexao, $sql);
 
 		$linhas = mysqli_affected_rows($conexao);
 
@@ -82,18 +86,21 @@
               </div>
             </div>
           </div><!--// Modal -->
+
+          <!-- Show Modal -->
           <script>
             $(document).ready(function () {
               $('#janela').modal('show');
             });
-          </script>
+          </script><!--// Show Modal -->
 
   			<?php } ?>
 
   		<div>
   			<a class="btn btn-primary" href="../index.php">Voltar</a>
   		</div>
-  	</div>
+
+  	</div><!-- Conteiner -->
 
   </body>
 </html>

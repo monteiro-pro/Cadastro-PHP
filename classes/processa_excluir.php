@@ -4,7 +4,7 @@
     $codigo = $_POST['codigo'];
 
 		$sql = "DELETE FROM usuario WHERE CODIGO = '$codigo'";
-		$salvar = mysqli_query($conexao, $sql);
+		$excluir = mysqli_query($conexao, $sql);
 
 		$linhas = mysqli_affected_rows($conexao);
 
@@ -78,18 +78,21 @@
               </div>
             </div>
           </div><!--// Modal -->
+
+          <!-- Show Modal -->
           <script>
             $(document).ready(function () {
               $('#janela').modal('show');
             });
-          </script>
+          </script><!--// Show Modal -->
 
   			<?php } ?>
 
   		<div>
   			<a class="btn btn-primary" href="../index.php">Voltar</a>
   		</div>
-  	</div>
+
+  	</div><!-- Conteiner -->
 
   </body>
 </html>

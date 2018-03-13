@@ -5,6 +5,10 @@
   $consulta = "SELECT * FROM usuario";
   $con = mysqli_query($conexao,$consulta) or die(mysqli_error());
 
+  $diretorio = "img/";
+
+  //move_uploaded_file($_FILES['foto']['tmp_name'], $diretorio);
+
 ?>
 
 <!DOCTYPE html>
@@ -35,7 +39,12 @@
             <div class="col-md-2">
               <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#modalcad">Cadastrar</button>
             </div>
-          </div><hr><!--// CADASTRAR USUÁRIO -->
+          </div><hr><br><!--// CADASTRAR USUÁRIO -->
+
+          <form method="POST" action="classes/processa_pesquisar.php" class="pull-right form-inline">
+            <input type="text" class="form-control" name="pesquisa" placeholder="Pesquisar...">
+            <button type="submit" class="btn btn-primary">Pesquisar</button>
+          </form>
 
           <!-- MODAL CADASTRAR -->
           <div class="modal fade" id="modalcad" tabindex="-1" role="dialog">
@@ -50,7 +59,8 @@
 
                 <!-- Body -->
                 <div class="modal-body">
-                  <form method="POST" id="formcad" action="classes/processa.php">
+                  <form method="POST" id="formcad" action="classes/processa.php" enctype="multipart/form-data">
+
                     <div class="form-group">
                       <label for="name" class="control-label">Nome:</label>
                       <div class="row">
@@ -59,6 +69,7 @@
                         </div><!--// col -->
                       </div><!--// row -->
                     </div>
+
                     <div class="form-group">
                       <label for="idade" class="control-label">Idade:</label>
                       <div class="row">
@@ -67,6 +78,7 @@
                         </div><!--// col -->
                       </div><!--// row -->
                     </div>
+
                     <div class="form-group">
                       <label for="email" class="control-label">E-Mail:</label>
                       <div class="row">
@@ -75,6 +87,7 @@
                         </div><!--// col -->
                       </div><!--// row -->
                     </div>
+
                     <div class="form-group">
                       <label for="senha" class="control-label">Senha:</label>
                       <div class="row">
@@ -83,6 +96,7 @@
                         </div><!--// col -->
                       </div><!--// row -->
                     </div>
+
                     <div class="form-group">
                       <label for="foto">Foto:</label>
                       <input type="file" class="form-control-file" id="foto" name="foto">
@@ -99,7 +113,7 @@
 
               </div><!--// Modal-Content -->
             </div>
-          </div><!--// MODAL EDITAR --> 
+          </div><!--// MODAL CADASTRAR --> 
 
           <!-- CONSULTA -->
           <h3>Consultar</h3>
@@ -112,6 +126,7 @@
                 <th>Idade</th>
                 <th>E-Mail</th>
                 <th>Senha</th>
+                <th>Foto</th>
                 <th colspan="2">Ação</th>
               </tr>
             </thead>
@@ -123,11 +138,10 @@
                 <td><?php echo $dado["IDADE"]; ?></td>
                 <td><?php echo $dado["EMAIL"]; ?></td>
                 <td><?php echo $dado["SENHA"]; ?></td>
+                <td><img src="<?php echo $diretorio.$dado["FOTO"]; ?>"></td>
                 <td>
-                  <a href="" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="<?php echo $dado["NOME"]; ?>" data-whateveridade="<?php echo $dado["IDADE"]; ?>" data-whateveremail="<?php echo $dado["EMAIL"]; ?>" data-whateversenha="<?php echo $dado["SENHA"]; ?>" data-whatevercodigo="<?php echo $dado["CODIGO"]; ?>">Editar</a>
-                  
-                </td>
-                <td>
+                  <a href="" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="<?php echo $dado["NOME"]; ?>" data-whateveridade="<?php echo $dado["IDADE"]; ?>" data-whateveremail="<?php echo $dado["EMAIL"]; ?>" data-whateversenha="<?php echo $dado["SENHA"]; ?>" data-whatevercodigo="<?php echo $dado["CODIGO"]; ?>">Editar</a> | 
+                
                   <a href="" data-toggle="modal" data-target="#modalExcluir" class="btn btn-danger" data-whatever="<?php echo $dado["NOME"]; ?>" data-whatevercodigo="<?php echo $dado["CODIGO"]; ?>">Excluir</a>
                 </td>
               </tr>
@@ -148,7 +162,8 @@
 
                 <!-- Body -->
                 <div class="modal-body">
-                  <form method="POST" action="http://localhost/cadastro/classes/processa_editar.php" enctype="multipart/form-data">
+                  <form method="POST" action="classes/processa_editar.php" enctype="multipart/form-data">
+
                     <div class="form-group">
                       <label for="recipient-name" class="control-label">Nome:</label>
                       <div class="row">
@@ -157,6 +172,7 @@
                         </div><!--// col -->
                       </div><!--// row -->
                     </div>
+
                     <div class="form-group">
                       <label for="recipient-idade" class="control-label">Idade:</label>
                       <div class="row">
@@ -165,6 +181,7 @@
                         </div><!--// col -->
                       </div><!--// row -->
                     </div>
+
                     <div class="form-group">
                       <label for="recipient-email" class="control-label">E-Mail:</label>
                       <div class="row">
@@ -173,6 +190,7 @@
                         </div><!--// col -->
                       </div><!--// row -->
                     </div>
+
                     <div class="form-group">
                       <label for="recipient-senha" class="control-label">Senha:</label>
                       <div class="row">
@@ -180,6 +198,11 @@
                           <input type="text" name="senha" class="form-control" id="recipient-senha">
                         </div><!--// col -->
                       </div><!--// row -->
+                    </div>
+
+                    <div class="form-group">
+                      <label for="recipient-foto" class="control-label">Foto:</label>
+                      <input type="file" class="form-control-file" id="recipient-foto" name="foto">
                     </div>
 
                     <input type="hidden" name="codigo" id="recipient-codigo">
@@ -208,7 +231,7 @@
                   <h3 class="modal-title-excluir" id="exampleModalLabel"></h3>
                 </div><!--// Header -->
 
-                <form method="POST" action="http://localhost/cadastro/classes/processa_excluir.php" enctype="multipart/form-data">
+                <form method="POST" action="classes/processa_excluir.php" enctype="multipart/form-data">
                   <input type="hidden" name="codigo" id="recipient-codigo">
 
                   <!-- Footer -->
