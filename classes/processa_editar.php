@@ -11,7 +11,15 @@
 
     move_uploaded_file($temp, "../img/".$foto);
 
-		$sql = "UPDATE usuario SET NOME='$nome',IDADE='$idade',EMAIL='$email',SENHA='$senha',FOTO='$foto' WHERE CODIGO = '$codigo'";
+		if ($foto != null) {
+
+      $sql = "UPDATE usuario SET NOME='$nome',IDADE='$idade',EMAIL='$email',SENHA='$senha',FOTO='$foto' WHERE CODIGO = '$codigo'";
+
+    } else{
+
+      $sql = "UPDATE usuario SET NOME='$nome',IDADE='$idade',EMAIL='$email',SENHA='$senha' WHERE CODIGO = '$codigo'";
+    }
+    
 		$atualizar = mysqli_query($conexao, $sql);
 
 		$linhas = mysqli_affected_rows($conexao);
@@ -29,10 +37,10 @@
     <title>Conf. de Alteração</title>
     
     <!-- Bootstrap -->
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/estilo.css" rel="stylesheet">
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../estilo.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
     
   </head>
   <body>
